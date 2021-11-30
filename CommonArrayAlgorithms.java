@@ -76,7 +76,7 @@ public class CommonArrayAlgorithms
          *        occurs (index is the number and the value is the number of occurrences)
          */
         
-        int[] array = createRandomArray(30,10);
+        int[] array = createRandomArray(30,11);
         
         int[] numArray = new int[11];
         
@@ -107,12 +107,10 @@ public class CommonArrayAlgorithms
         
         printArray(array);
         printArray(numArray);
-        modeNumber++;
-        System.out.println("The Mode is : " + modeNumber + " and the number of iterations is : " + mode);
-        
-        
-        return 0;
+        System.out.println("The Mode is " + modeNumber + " and the number of iterations is " + mode);
+        return modeNumber;
     }
+
     
     public static int mode2()
     {
@@ -238,7 +236,7 @@ public class CommonArrayAlgorithms
     {
         int[] array = createRandomArray( 10, 50 );
         int max = array[0];
-        for (int i = 0; i < array.length; i++)
+        for (int i = 1; i < array.length; i++)
         {
             if (max < array[i])
             {
@@ -262,14 +260,15 @@ public class CommonArrayAlgorithms
     public static int[] reverseArray()
     {
         int []x = createRandomArray(10,100);
-        int []y = createRandomArray(10,0);
-        for (int i = 9; i>=0; i--)
+        int []y = new int[x.length];
+        for (int i = x.length-1; i>=0; i--)
         {
-            y[9-i] = x[i];
+            y[x.length-i-1] = x[i];
         }
         printArray(x);
         printArray(y);
         return y;
+
     }
 
 
