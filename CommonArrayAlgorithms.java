@@ -75,9 +75,77 @@ public class CommonArrayAlgorithms
          *        create another array to keep track of how many times each value
          *        occurs (index is the number and the value is the number of occurrences)
          */
-         
-         return 0;
+        
+        int[] array = createRandomArray(30,10);
+        
+        int[] numArray = new int[11];
+        
+        for (int i = 0 ; i < 11 ; i++){
+            for ( int j = 1 ; j < 31 ; j++){
+                if (array[j-1] == i){
+                    numArray[i] += 1;
+                }
+                
+            }
+        }
+        int mode = 0;
+        for (int i = 0; i<numArray.length ; i++){
+            if (mode >= numArray[i]){
+                mode = mode;
+            }
+            else{
+                mode = numArray[i];
+            }
+            
+        }
+        int modeNumber = 0;
+        for (int i = 0; i<numArray.length ; i++){
+            if (mode == numArray[i]){
+                modeNumber = i;
+            }
+        }
+        
+        printArray(array);
+        printArray(numArray);
+        modeNumber++;
+        System.out.println("The Mode is : " + modeNumber + " and the number of iterations is : " + mode);
+        
+        
+        return 0;
     }
+    
+    public static int mode2()
+    {
+        /* hint: when creating the random array, specify parameters that will
+         *    likely result in a value being repeated multiple times;
+         *    create another array to keep track of how many times each value
+         *    occurs (index is the number and the value is the number of occurrences)
+         */
+
+        int maxValue = 10;
+        int[] array = createRandomArray(20, maxValue);
+        int maxfreq = 0;
+        int mode = 0;
+        int[] freq = new int[maxValue];
+        for(int i = 0; i < array.length; i++) // could have used an enhanced for loop
+        {
+            freq[array[i]]++;
+        }
+
+        for(int j = 0; j < freq.length; j++)
+        {
+            if(freq[j] > maxfreq)
+            {
+                maxfreq = freq[j];
+                mode = j;
+            }
+        }
+        
+        printArray(array);
+        printArray(freq);
+        return mode;
+    }
+
 
     /*
      * Array Algorithm #2: Print Element Separators
@@ -87,7 +155,21 @@ public class CommonArrayAlgorithms
      */
     public static void printElementSeparators()
     {
+        int [] values = createRandomArray(10, 50); 
+        for (int i = 0; i < values.length; i++)
+        {
+            System.out.print(values[i]);
+            if (i < values.length - 1)
+            {
+                System.out.print(" | ");
+            }
+            else
+            {
+                System.out.println();
+            }
+        }
     }
+
 
     /*
      * Array Algorithm #3: Linear Search
@@ -98,8 +180,28 @@ public class CommonArrayAlgorithms
      */
     public static int linearSearch( int valueToFind )
     {
-    	return 0;
+        int[] array = CommonArrayAlgorithms.createRandomArray(10, 20);
+        
+        int i = 0; 
+        int x=-1;
+        do 
+        {
+             if (array[i]==valueToFind)
+             {
+                 x=i;
+             }
+             
+             else
+             {
+                 i++;
+             }
+        } while (x == -1 && i < array.length);
+        
+        CommonArrayAlgorithms.printArray(array);
+        System.out.println("Index: "+x);
+        return x;
     }
+
 
     /*
      * Array Algorithm #4: Count Less Than
@@ -110,8 +212,21 @@ public class CommonArrayAlgorithms
      */
     public static int countLessThan( int limit )
     {
-    	return 0;
+        int[] array = createRandomArray(10, 50);
+    
+        int count = 0;
+        
+        for(int i=0; i<array.length; i++)
+        {
+            if (array[i] < limit){
+                count++;
+            }
+        }
+        printArray(array);
+        System.out.println(count);
+        return count;
     }
+
 
     /*
      * Array Algorithm #5: findMax
@@ -121,8 +236,20 @@ public class CommonArrayAlgorithms
      */
     public static int findMax() 
     {
-    	return 0;
+        int[] array = createRandomArray( 10, 50 );
+        int max = array[0];
+        for (int i = 0; i < array.length; i++)
+        {
+            if (max < array[i])
+            {
+                max = array[i];
+            }
+        }
+        printArray( array );
+        System.out.println(max);
+        return max;
     }
+
 
     /*
      * Array Algorithm #6: Reverse Array
@@ -134,7 +261,16 @@ public class CommonArrayAlgorithms
      */
     public static int[] reverseArray()
     {
-        return null;
+        int []x = createRandomArray(10,100);
+        int []y = createRandomArray(10,0);
+        for (int i = 9; i>=0; i--)
+        {
+            y[9-i] = x[i];
+        }
+        printArray(x);
+        printArray(y);
+        return y;
     }
+
 
 }
